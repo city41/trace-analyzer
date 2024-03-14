@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Header } from "./Header";
 import { Trace } from "./Trace";
+import { parseTrace } from "./parser/parseTrace";
 
 function App() {
   const [trace, setTrace] = useState<Trace | null>(null);
@@ -12,7 +13,7 @@ function App() {
   return (
     <div>
       <Header onTraceFileLoaded={handleTraceFileLoaded} />
-      <Trace />
+      {trace && <Trace trace={trace} />}
     </div>
   );
 }
